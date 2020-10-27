@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'Home.dart';
 import 'a.dart';
+import 'a.dart';
+import 'pages/AdminPage.dart';
 
 class ListCardUi extends StatefulWidget {
   final List items;
@@ -34,7 +36,9 @@ class _ListCardUiState extends State<ListCardUi> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) => A(
-                      //url: widget.items[index]['link'],
+                      imagem: widget.items[index]['image'],
+                      titulo: widget.items[index]['title'],
+                      historia: widget.items[index]['historia'],
                     ),
                   ),
                 );

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'login_page.dart';
 import 'main.dart';
 
 class Register extends StatefulWidget {
@@ -35,7 +36,7 @@ class _RegisterState extends State<Register> {
         fontSize: 20.0,
       );
     } else {
-     /* FlutterToast(context).showToast(
+      /* FlutterToast(context).showToast(
           child: Text('Registration Successful',
               style: TextStyle(fontSize: 25, color: Colors.green)));*/
       Fluttertoast.showToast(
@@ -45,9 +46,15 @@ class _RegisterState extends State<Register> {
         backgroundColor: Colors.red,
         fontSize: 20.0,
       );
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(),),);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MyHomePage(),
+        ),
+      );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,23 +103,20 @@ class _RegisterState extends State<Register> {
                   controller: pass,
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                    child: MaterialButton(
-                      color: Colors.pink,
-                      child: Text('Register',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                      onPressed: () {
-                        register();
-                      },
-                    ),
-                  ),
-
-
+                child: MaterialButton(
+                  color: Colors.pink,
+                  child: Text('Register',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
+                  onPressed: () {
+                    register();
+                  },
+                ),
+              ),
             ],
           ),
         ),

@@ -17,12 +17,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List playlists = [];
 
-
   @override
   void initState() {
     super.initState();
 
-    http.get('http://192.168.1.146/video/video.php').then((value) {
+    http.get('http://192.168.0.143/video.php').then((value) {
       List<dynamic> response = jsonDecode(value.body);
 
       setState(() {
