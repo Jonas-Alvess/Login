@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: buildTheme(),
       debugShowCheckedModeBanner: false,
       title: 'Login Localhost',
-      home: new Home(),
+      home: new MyHomePage(),
       // routes: <String,WidgetBuilder>{
       //   '/AdminPage': (BuildContext context)=> new AdminPage(username: username, id_usuario:id_usuario),
       //   '/Home': (BuildContext context)=> new Home(username: username, id_usuario:id_usuario),

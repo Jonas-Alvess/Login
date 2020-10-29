@@ -38,37 +38,41 @@ class _MyHomePageState extends State<MyHomePage> {
 
         if (datauser['level'] == 'admin') {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => AdminPage(
-                username: datauser['username'],
-                id_usuario: datauser['id_usuario'],
-              )));
+              context,
+              MaterialPageRoute(
+                  builder: (_) => AdminPage(
+                        username: datauser['username'],
+                        id_usuario: datauser['id_usuario'],
+                      )));
         } else if (datauser['level'] == 'member') {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => MemberPage(
-                username: datauser['username'],
-                id_usuario: datauser['id_usuario'],
-              )));
+              context,
+              MaterialPageRoute(
+                  builder: (_) => MemberPage(
+                        username: datauser['username'],
+                        id_usuario: datauser['id_usuario'],
+                      )));
         }
       }
     });
   }
 
   Future<List> _login() async {
-    // // final response =
-    // //     await http.post("http://192.168.1.146/logado/login.php", body: {
-    // //   "username": user.text,
-    // //   "password": pass.text,
-    // //   //"id":id,
-    // // });
+    final response =
+        await http.post("http://192.168.1.146/logado/login.php", body: {
+      "username": user.text,
+      "password": pass.text,
+      //"id":id,
+    });
 
-    // // var datauser = json.decode(response.body);
-    var datauser = [
-      {
-        'level': 'admin',
-        'username': 'firmino',
-        'id_usuario': '12'
-      }
-    ];
+    var datauser = json.decode(response.body);
+    // var datauser = [
+    //   {
+    //     'level': 'admin',
+    //     'username': 'firmino',
+    //     'id_usuario': '12'
+    //   }
+    // ];
 
     if (datauser.length == 0) {
       setState(() {
@@ -99,9 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.red[900],
-
         //appBar: AppBar(title: Text("Login"),),
-
         body: SingleChildScrollView(
           padding: EdgeInsets.only(top: 70, left: 30, right: 30),
           child: Column(
