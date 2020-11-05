@@ -1,6 +1,7 @@
 import 'package:awsome_video_player/awsome_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:list2/executores_video/youtube_play.dart';
 
 class A extends StatefulWidget {
   final Map<String, dynamic> media;
@@ -23,6 +24,10 @@ class _AState extends State<A> {
                   ? AwsomeVideoPlayer(
                       widget.media['link'],
                     )
+                  // YoutubePlay(
+                  //   url: widget.media['link'],
+                  // )
+                  
                   : CachedNetworkImage(
                       imageUrl: widget.media['image'],
                       width: 350,
