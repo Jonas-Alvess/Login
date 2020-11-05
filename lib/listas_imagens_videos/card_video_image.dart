@@ -31,8 +31,10 @@ class _CardVideoImageState extends State<CardVideoImage> {
 
   antigo() {
     return Card(
-      margin: EdgeInsets.only(bottom: 50),
-      
+      margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       elevation: 10,
       child: InkWell(
         onTap: () async {
@@ -44,34 +46,45 @@ class _CardVideoImageState extends State<CardVideoImage> {
             ),
           );
         },
-        child: Stack(
-          children: [
-            Container(
-              height: 400,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Image.network(
-                    widget.media['image'],
-                    height: 300,
+        child: Container(
+          height: 350,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      widget.media['image'],
+                    ),
+                    fit: BoxFit.cover,
                   ),
-                  Text(
-                    widget.media['title'],
-                    style: TextStyle(fontSize: 17),
+                ),
+                child: Visibility(
+                  visible: widget.media['type'] == 'video',
+                  child: Icon(
+                    Icons.play_circle_fill_rounded,
+                    size: 100,
                   ),
-                  Text(widget.media['description']),
-                ],
+                ),
               ),
-            ),
-            Positioned(
-              bottom: 150,
-              left: MediaQuery.of(context).size.width / 2,
-              child: Icon(
-                Icons.play_circle_fill_rounded,
-                size: 100,
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  widget.media['title'],
+                  style: TextStyle(fontSize: 17),
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(widget.media['description']),
+              ),
+            ],
+          ),
         ),
       ),
     );
