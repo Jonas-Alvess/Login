@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'login_page.dart';
+import 'login_page.dart';
 import 'main.dart';
 
 class Register extends StatefulWidget {
@@ -15,7 +16,7 @@ class _RegisterState extends State<Register> {
   TextEditingController pass = TextEditingController();
 
   Future register() async {
-    var url = "http://192.168.1.146/logado/register.php";
+    var url = "http://jcatechnology.com.br/ss/register.php";
     var response = await http.post(url, body: {
       "username": user.text,
       "password": pass.text,

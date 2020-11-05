@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:list2/register.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:list2/register.dart';
-
 import 'Home.dart';
-import 'pages/AdminPage.dart';
 import 'pages/MemberPage.dart';
 import 'package:json_store/json_store.dart';
 
@@ -15,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController user = new TextEditingController();
+  TextEditingController users = new TextEditingController();
   TextEditingController pass = new TextEditingController();
   // Plugin de armazenamento local
   JsonStore jsonStore = JsonStore();
@@ -25,56 +23,24 @@ class _MyHomePageState extends State<MyHomePage> {
   String username = '';
   String id_usuario = '';
 
-  @override
-  void initState() {
-    super.initState();
 
-    jsonStore.getItem('user').then((value) {
-      if (value == null) {
-        // enviar para tela de login
-      } else {
-        // Recupera os dados do usuário salvo no armazenamento local
-        var datauser = value;
-
-        if (datauser['level'] == 'admin') {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => AdminPage(
-                        username: datauser['username'],
-                        id_usuario: datauser['id_usuario'],
-                      )));
-        } else if (datauser['level'] == 'member') {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => MemberPage(
-                        username: datauser['username'],
-                        id_usuario: datauser['id_usuario'],
-                      )));
-        }
-      }
-    });
-  }
 
   Future<List> _login() async {
-    // final response = await http.post(
-    //   "http://192.168.1.146/logado/login.php",
-    //   body: {
-    //     "username": user.text,
-    //     "password": pass.text,
-    //     //"id":id,
-    //   },
-    // );
+    final response =
+    await http.post("http://jcatechnology.com.br/ss/login.php", body: {
+      "username": users.text,
+      "password": pass.text,
+      //"id":id,
+    });
 
-    // var datauser = json.decode(response.body);
-    var datauser = [
+    var datauser = json.decode(response.body);
+    /* var datauser = [
       {
         'level': 'admin',
         'username': 'firmino',
         'id_usuario': '12'
       }
-    ];
+    ];*/
 
     if (datauser.length == 0) {
       setState(() {
@@ -83,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       if (datauser[0]['level'] == 'admin') {
         // Navigator.pushReplacementNamed(context, '/Home');
-        Navigator.push(context, MaterialPageRoute(builder: (_) => AdminPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => Home()));
       } else if (datauser[0]['level'] == 'member') {
         // Navigator.pushReplacementNamed(context, '/MemberPage');
         Navigator.push(
@@ -110,22 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.only(top: 70, left: 30, right: 30),
           child: Column(
             children: <Widget>[
-              /*Text('Login', style: new TextStyle(
-                  shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(1.0, 1.0),
-                      blurRadius: 2.0,
-                      color: Color.fromARGB(255, 0, 0, 0),
-                    ),
-//                      Shadow(
-//                        offset: Offset(10.0, 10.0),
-//                        blurRadius: 2.0,
-//                        color: Color.fromARGB(125, 0, 0, 255),
-//                      ),
-                  ],
-                  color: hexToColor("#F2A03D"), fontSize: 25.0),),*/
-
-              /*Container(
+              new Padding(padding: EdgeInsets.only(top: 50.0)),
+              Container(
                 height: 200,
                 width: 200,
                 child: CircleAvatar(
@@ -133,14 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   ),
                 ),
-              ),*/
-
-              /*Image.asset("imagens/ss.png",
-                  ),*/
-
-              new Padding(padding: EdgeInsets.only(top: 50.0)),
+              ),
               new TextFormField(
-                controller: user,
+                controller: users,
                 decoration: new InputDecoration(
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25.0),

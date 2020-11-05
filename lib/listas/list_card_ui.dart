@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import 'a.dart';
+import '../Home.dart';
+import '../detail/a.dart';
+import '../detail/a.dart';
+import '../pages/AdminPage.dart';
 
 class ListCardUi extends StatefulWidget {
   final List items;
@@ -33,9 +36,7 @@ class _ListCardUiState extends State<ListCardUi> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) => A(
-                      imagem: widget.items[index]['image'],
-                      titulo: widget.items[index]['title'],
-                      historia: widget.items[index]['historia'],
+                      media: widget.items[index]
                     ),
                   ),
                 );
