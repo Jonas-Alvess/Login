@@ -4,7 +4,7 @@ class AdminPage extends StatelessWidget {
 
   AdminPage({this.username, this.id_usuario});
   final String username;
-  final int id_usuario;
+  final String id_usuario;
 
   @override
   Widget build(BuildContext context) {

@@ -58,21 +58,23 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<List> _login() async {
-    final response =
-        await http.post("http://192.168.1.146/logado/login.php", body: {
-      "username": user.text,
-      "password": pass.text,
-      //"id":id,
-    });
+    // final response = await http.post(
+    //   "http://192.168.1.146/logado/login.php",
+    //   body: {
+    //     "username": user.text,
+    //     "password": pass.text,
+    //     //"id":id,
+    //   },
+    // );
 
-    var datauser = json.decode(response.body);
-    // var datauser = [
-    //   {
-    //     'level': 'admin',
-    //     'username': 'firmino',
-    //     'id_usuario': '12'
-    //   }
-    // ];
+    // var datauser = json.decode(response.body);
+    var datauser = [
+      {
+        'level': 'admin',
+        'username': 'firmino',
+        'id_usuario': '12'
+      }
+    ];
 
     if (datauser.length == 0) {
       setState(() {

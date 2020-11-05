@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
+import '../login_page.dart';
 import '../main.dart';
 
 class Ocorrencia extends StatefulWidget {
@@ -29,7 +30,7 @@ class _OcorrenciaState extends State<Ocorrencia> {
   Future register() async {
     var url = "http://192.168.0.20/logado/create.php";
     var response = await http.post(url, body: {
-      "id_usuario": id_usuario,
+      "id_usuario": widget.id_usuario,
       "local": local.text,
       "dia": dia.text,
       "hora": hora.text,
