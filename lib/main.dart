@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:list2/pages/AdminPage.dart';
 import 'package:list2/pages/MemberPage.dart';
+import 'package:list2/pages/splashScreen.dart';
 import 'package:list2/register.dart';
 import 'Home.dart';
 import 'login_page.dart';
 
 
 void main() => runApp(new MyApp());
-
-
 
 class MyApp extends StatelessWidget {
 
@@ -22,13 +21,8 @@ class MyApp extends StatelessWidget {
       theme: buildTheme(),
       debugShowCheckedModeBanner: false,
       title: 'Login Localhost',
-      home: new Home(),
-      // routes: <String,WidgetBuilder>{
-      //   '/AdminPage': (BuildContext context)=> new AdminPage(username: username, id_usuario:id_usuario),
-      //   '/Home': (BuildContext context)=> new Home(username: username, id_usuario:id_usuario),
-      //   '/MemberPage': (BuildContext context)=> new MemberPage(username: username, id_usuario:id_usuario),
+      home: new SplashScreen(),
 
-      // },
     );
   }
 
